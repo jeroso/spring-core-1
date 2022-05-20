@@ -33,4 +33,10 @@ class OrderServiceTest {
         Order order = orderService.createOrder(memberId, "itemA", 10000);
         Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
+
+    @Test
+    void fieldInjectionTest() {
+//        OrderServiceImpl orderService = new OrderServiceImpl();
+        //만약 필드 주입으로 되어 있으면 NPE 발생 => 해결하려면 필드의 setter를 생성하여 접근해야 함
+    }
 }
