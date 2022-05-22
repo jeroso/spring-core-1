@@ -11,7 +11,7 @@ import spring.core.member.MemberRepository;
 import spring.core.member.MemoryMemberRepository;
 
 @Component
-@RequiredArgsConstructor    // final 이 붙은 것들을 파라미터로 받는 생성자를 자동으로 만들어 준다.
+//@RequiredArgsConstructor    // final 이 붙은 것들을 파라미터로 받는 생성자를 자동으로 만들어 준다.
 public class OrderServiceImpl implements OrderService{
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -36,10 +36,10 @@ public class OrderServiceImpl implements OrderService{
 
 // @ReqiuredArgsConstructor
 //    @Autowired  // 생성자가 1개만 있다면 @Autowired 를 생략 가능
-//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-//        this.memberRepository = memberRepository;
-//        this.discountPolicy = discountPolicy;
-//    }
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
 
     @Override
