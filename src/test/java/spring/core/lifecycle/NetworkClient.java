@@ -1,13 +1,15 @@
 package spring.core.lifecycle;
 
-public class NetworkClient {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+// InitializingBean, DisposableBean => 단점이 있어서 이젠 잘 사용하지 X 더 좋은 방법이 존재
+public class NetworkClient implements InitializingBean, DisposableBean {
 
     private String url;
 
     public NetworkClient() {
         System.out.println("생성자 호출, url = " + url);
-        connect();
-        call("초기화 연결 메세지");
     }
 
     public void setUrl(String url) {
@@ -28,4 +30,16 @@ public class NetworkClient {
         System.out.println("close: " + url);
     }
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("NetworkClient.afterPropertiesSet");
+        connect();
+        call("초기화 연결 메세지");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("NetworkClient.destroy");
+        disconnect();
+    }
 }
