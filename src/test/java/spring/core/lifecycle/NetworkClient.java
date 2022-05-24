@@ -1,5 +1,8 @@
 package spring.core.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 // InitializingBean, DisposableBean => 단점이 있어서 이젠 잘 사용하지 X 더 좋은 방법이 존재
 public class NetworkClient {
 
@@ -27,12 +30,14 @@ public class NetworkClient {
         System.out.println("close: " + url);
     }
 
+    @PostConstruct
     public void init() throws Exception {
         System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메세지");
     }
 
+    @PreDestroy
     public void close() throws Exception {
         System.out.println("NetworkClient.close");
         disconnect();
