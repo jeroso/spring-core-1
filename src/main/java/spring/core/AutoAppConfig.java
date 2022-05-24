@@ -9,7 +9,7 @@ import spring.core.member.MemoryMemberRepository;
 
 @Configuration
 @ComponentScan(
-        basePackages = "spring.core.member",    //member만 @componentScan 대상이 됨
+//        basePackages = "spring.core.member",    //member만 @componentScan 대상이 됨
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)  //AppConfig.class 를 제외한다.
 )
 public class AutoAppConfig {
