@@ -20,7 +20,9 @@ public class PrototypeTest {
         System.out.println("prototypeBean1 = " + prototypeBean1);
         System.out.println("prototypeBean2 = " + prototypeBean2);
         Assertions.assertThat(prototypeBean1).isNotSameAs(prototypeBean2);
-
+        // 프로토타입 빈은 destroy 가 호출되지 않지만 호출해야 한다면 직접 호출 해야 한다.
+        prototypeBean1.destroy();
+        prototypeBean2.destroy();
         ac.close();
     }
 
